@@ -144,10 +144,10 @@ window.java2js = {
         }
         else if(location.href.search("industrial") > 0) {
 
-            el = $("div.headertable table td.bodyContentValue");
-            bill[tags[0]] = el.eq(0).text().trim(); // consumer
-            bill[tags[1]] = el.eq(29).text().trim(); // amount
-            errorLog("industrial setup: " + el.length);
+            var el1 = $("div.headertable table td.bodyContentValue");
+            bill[tags[0]] = el1.eq(0).text().trim(); // consumer
+            bill[tags[1]] = el1.eq(29).text().trim(); // amount
+            errorLog("industrial setup: " + el1.length);
 
             el = $("div.headertable table .bodyContentValue td");
             bill[tags[2]] = el.eq(0).text().trim(); // bill month
@@ -155,6 +155,11 @@ window.java2js = {
             bill[tags[4]] = el.eq(2).text().trim(); // ref no
             bill[tags[5]] = el.eq(4).text().trim(); // late amount
             bill[tags[6]] = jQuery('table.headertable tr.bodyContentValue:first td:nth(6)').text().trim(); // issue date
+
+            if(el1.eq(29).find('div').length > 1) {
+                bill[tags[1]] = el1.eq(29).find('div:first').text().trim();
+                bill[tags[5]] = el.eq(4).find('div:first').text().trim();
+            }
 
             errorLog("industrial setup: " + el.length);
         }
