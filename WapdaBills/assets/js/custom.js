@@ -43,8 +43,10 @@ function discoPageHandle($) {
             }
         }
         else {
-            $('#searchTextBox').val(bill_data.refNo);
-            $("#btnSearch").click();
+            if($('#searchTextBox').val() == '') {
+                $('#searchTextBox').val(bill_data.refNo);
+                $("#btnSearch").click();
+            }
         }
     }
 //    errorLog("Disco End");
@@ -95,6 +97,8 @@ function isValidDate(d) {
 
 window.java2js = {
     getDiscoErrorMsg: function() {
+        discoPageHandle();
+
         var el = document.getElementById("ua");
         if(el) {
             return document.getElementById("ua").innerText.trim();
