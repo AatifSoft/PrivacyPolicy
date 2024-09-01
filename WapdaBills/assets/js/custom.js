@@ -40,6 +40,7 @@ function discoPageHandle($) {
             if($('#searchTextBox').val() == '') {
                 $('#searchTextBox').val(bill_data.refNo);
                 $("#btnSearch").click();
+                errorLog("Search for ref no started");
             }
         }
     }
@@ -91,7 +92,7 @@ function isValidDate(d) {
 
 window.java2js = {
     getDiscoErrorMsg: function() {
-        discoPageHandle();
+        discoPageHandle(jQuery);
 
         var el = document.getElementById("ua");
         if(el) {
