@@ -66,7 +66,7 @@ function billPageHandle($) {
 }
 
 function errorLog(msg) {
-    // console.log(msg + ", Timestamp: " + (new Date).getTime());
+    console.log(msg + ", Timestamp: " + (new Date).getTime());
 }
 
 function adjustViewPort($) {
