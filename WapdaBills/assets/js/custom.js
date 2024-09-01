@@ -55,10 +55,6 @@ function billPageHandle($) {
    // errorLog("Bill End");
 }
 
-function errorLog(msg) {
-    console.log(msg + ", Timestamp: " + (new Date).getTime());
-}
-
 function adjustViewPort($) {
     var viewPortTag=document.createElement('meta');
     viewPortTag.id="viewport";
@@ -209,8 +205,10 @@ window.java2js = {
 
         return bill;
     }
-
-
 }
-errorLog("Script Loaded")
 
+function errorLog(msg) {
+    console.log(msg + ", Timestamp: " + (new Date).getTime());
+}
+
+errorLog("Script Loaded")
