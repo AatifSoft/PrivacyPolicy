@@ -43,7 +43,7 @@ function discoPageHandle($) {
             }
         }
         else {
-            $('#searchTextBox').val(data.refNo);
+            $('#searchTextBox').val(bill_data.refNo);
             $("#btnSearch").click();
         }
     }
@@ -146,7 +146,7 @@ window.java2js = {
             bill[tags[1]] = el.eq(1).text().trim(); // bill_amount
             bill[tags[5]] = el.eq(5).text().trim(); // late_amount
 
-            if(el.eq(1).find('div').length > 1) {
+            if(el.eq(1).find('div').length > 5) {
                 bill[tags[1]] = el.eq(1).find('div:first').text().trim();
                 bill[tags[5]] = el.eq(5).find('div:first').text().trim();
             }
