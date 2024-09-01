@@ -208,7 +208,7 @@ window.java2js = {
 }
 
 function errorLog(msg) {
-    console.log(msg + ", Timestamp: " + (new Date).getTime());
+    //console.log(msg + ", Timestamp: " + (new Date).getTime());
 }
 
 errorLog("Script Loaded")
