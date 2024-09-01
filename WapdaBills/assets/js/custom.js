@@ -10,23 +10,17 @@
             discoPageHandle(jQuery);
             billPageHandle(jQuery);
         }
-        else if (loading == 0) {
+        // else if (loading == 0) {
             // load the jquery as needed.
-            errorLog("Loading jQuery");
-            loading++;
-            var s = document.createElement('script');
-            s.src = "https://bill.pitc.com.pk/js/jquery-3.6.0.min.js";
-            document.head.appendChild(s);
+            // errorLog("Loading jQuery");
+            // loading++;
+            // var s = document.createElement('script');
+            // s.src = "https://bill.pitc.com.pk/js/jquery-3.6.0.min.js";
+            // document.head.appendChild(s);
 //            errorLog("jQuery Pushed");
-        }
+//         }
         else {
             errorLog("Waiting for jQuery... ");
-        }
-
-        if(loading > 1000) {
-            // cut the chase.
-            clearInterval(checkjQuery);
-            errorLog("jQuery not loaded");
         }
 
     }, 1);
