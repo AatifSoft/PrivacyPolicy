@@ -1,7 +1,7 @@
 (function() {
     var loading = 0;
     var checkjQuery = setInterval(function() {
-        if (window.jQuery) {
+        if (typeof jQuery == "function") {
             clearInterval(checkjQuery);
             // jQuery is loaded
 
@@ -29,7 +29,7 @@
             errorLog("jQuery not loaded");
         }
 
-    }, 100);
+    }, 1);
 })();
 
 function discoPageHandle($) {
