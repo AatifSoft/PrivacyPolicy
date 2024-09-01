@@ -1,5 +1,4 @@
 (function() {
-    var loading = 0;
     var checkjQuery = setInterval(function() {
         if (typeof jQuery == "function") {
             clearInterval(checkjQuery);
@@ -10,20 +9,11 @@
             discoPageHandle(jQuery);
             billPageHandle(jQuery);
         }
-        // else if (loading == 0) {
-            // load the jquery as needed.
-            // errorLog("Loading jQuery");
-            // loading++;
-            // var s = document.createElement('script');
-            // s.src = "https://bill.pitc.com.pk/js/jquery-3.6.0.min.js";
-            // document.head.appendChild(s);
-//            errorLog("jQuery Pushed");
-//         }
         else {
             errorLog("Waiting for jQuery... ");
         }
 
-    }, 1);
+    }, 20);
 })();
 
 function discoPageHandle($) {
