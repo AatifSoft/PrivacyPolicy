@@ -51,7 +51,7 @@ function discoPageHandle($) {
 }
 
 function billPageHandle($) {
-//    errorLog("Bill Start");
+   errorLog("Bill Start");
     if(location.href.search("refno") > 0) {
         errorLog("Running Bill Page Handle");
         // replace http with https to load the image
@@ -62,7 +62,7 @@ function billPageHandle($) {
         // hide the print button, as it does not work.
         $("#printBtn").hide();
     }
-//    errorLog("Bill End");
+   errorLog("Bill End");
 }
 
 function errorLog(msg) {
