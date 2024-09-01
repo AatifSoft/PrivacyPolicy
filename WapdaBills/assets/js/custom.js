@@ -29,7 +29,7 @@
             errorLog("jQuery not loaded");
         }
 
-    }, 10);
+    }, 100);
 })();
 
 function discoPageHandle($) {
