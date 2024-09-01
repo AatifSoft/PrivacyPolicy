@@ -42,6 +42,9 @@ function discoPageHandle($) {
                 $("#btnSearch").click();
                 errorLog("Search for ref no started");
             }
+            else {
+                errorLog("Search already started, skipping the 2nd call.");
+            }
         }
     }
 //    errorLog("Disco End");
