@@ -139,7 +139,7 @@ window.java2js = {
                 bill[tags[5]] = el.eq(5).find('div:first').text().trim();
             }
 
-            if(el.eq(5).find('div').length >= 2) {
+            if(el.eq(5).find('div').length >= 3) {
                 var t = el.eq(5).children('div:first').children("div:last").text().trim().split("\n");
                 bill[tags[5]] = t[t.length-1].trim();
             }
