@@ -16,10 +16,7 @@ window.js_parser = {
             "if_selector": false,
             "selector": "table.maintable tr.content td",
             "fields": [
-                {
-                    "name": "issue_date",
-                    "index": 5
-                }
+                {"name": "issue_date", "index": 5}
             ]
         },
         {
@@ -30,10 +27,7 @@ window.js_parser = {
             "result_lt": 100,
             "result_gt": 0,
             "fields": [
-                {
-                    "name": "bill_amount",
-                    "index": 0
-                }
+                {"name": "bill_amount", "index": 0}
             ]
         },
         {
@@ -44,10 +38,7 @@ window.js_parser = {
             "result_lt": 3,
             "result_gt": 0,
             "fields": [
-                {
-                    "name": "late_amount",
-                    "index": 0
-                }
+                {"name": "late_amount", "index": 0}
             ]
         },
         {
@@ -57,8 +48,7 @@ window.js_parser = {
             "search_inside": "div",
             "result_lt": 100,
             "result_gt": 2,
-            "fields": [
-                {
+            "fields": [{
                     "name": "late_amount",
                     "index": 2,
                     "post_actions": [
@@ -68,8 +58,7 @@ window.js_parser = {
                             "require_index": -1
                         }
                     ]
-                }
-            ]
+            }]
         }
     ],
     "industrial": [
@@ -77,46 +66,25 @@ window.js_parser = {
             "if_selector": false,
             "selector": "div.headertable table td.bodyContentValue",
             "fields": [
-                {
-                    "name": "consumer",
-                    "index": 0
-                },
-                {
-                    "name": "bill_amount",
-                    "index": -1
-                }
+                {"name": "consumer", "index": 0},
+                {"name": "bill_amount", "index": -1}
             ]
         },
         {
             "if_selector": false,
             "selector": "div.headertable table .bodyContentValue td",
             "fields": [
-                {
-                    "name": "bill_month",
-                    "index": 0
-                },
-                {
-                    "name": "due_date",
-                    "index": 1
-                },
-                {
-                    "name": "ref_no",
-                    "index": 2
-                },
-                {
-                    "name": "late_amount",
-                    "index": 4
-                }
+                {"name": "bill_month", "index": 0},
+                {"name": "due_date", "index": 1},
+                {"name": "ref_no", "index": 2},
+                {"name": "late_amount", "index": 4}
             ]
         },
         {
             "if_selector": false,
             "selector": "table.headertable tr.bodyContentValue td",
             "fields": [
-                {
-                    "name": "issue_date",
-                    "index": 6
-                }
+                {"name": "issue_date", "index": 6}
             ]
         },
         {
@@ -127,10 +95,7 @@ window.js_parser = {
             "result_lt": 100,
             "result_gt": 1,
             "fields": [
-                {
-                    "name": "bill_amount",
-                    "index": 0
-                }
+                {"name": "bill_amount", "index": 0}
             ]
         },
         {
@@ -141,10 +106,7 @@ window.js_parser = {
             "result_lt": 3,
             "result_gt": 1,
             "fields": [
-                {
-                    "name": "late_amount",
-                    "index": 0
-                }
+                {"name": "late_amount", "index": 0}
             ]
         },
         {
