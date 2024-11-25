@@ -1,3 +1,14 @@
+function getParser() {
+    if(typeof window.js_parser == "undefined") {
+        jQuery.getJSON("https://aatifsoft.github.io/PrivacyPolicy/WapdaBills/assets/js/parser.json", function (data) {
+            window.js_parser = data;
+        });
+    }
+
+    return window.js_parser;
+}
+getParser();
+
 (function () {
     var checkjQuery = setInterval(function () {
         if (typeof jQuery == "function") {
@@ -294,14 +305,4 @@ function processFields(fields, elements, bill) {
     return bill;
 }
 
-function getParser() {
-    if(typeof window.js_parser == "undefined") {
-        jQuery.getJSON("https://aatifsoft.github.io/PrivacyPolicy/WapdaBills/assets/js/parser.json", function (data) {
-            window.js_parser = data;
-        });
-    }
-
-    return window.js_parser;
-}
-getParser();
 errorLog("Script Loaded")
