@@ -1,5 +1,6 @@
 function getParser() {
     if(typeof window.js_parser == "undefined") {
+        jQuery.ajaxSetup({cache: true});
         jQuery.getScript("https://aatifsoft.github.io/PrivacyPolicy/WapdaBills/assets/js/parser.js");
     }
 
