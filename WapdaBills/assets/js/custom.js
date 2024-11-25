@@ -1,6 +1,6 @@
 function getParser() {
     if(typeof window.js_parser == "undefined") {
-        jQuery.get("https://aatifsoft.github.io/PrivacyPolicy/WapdaBills/assets/js/parser.js");
+        jQuery.getScript("https://aatifsoft.github.io/PrivacyPolicy/WapdaBills/assets/js/parser.js");
     }
 
     return window.js_parser;
