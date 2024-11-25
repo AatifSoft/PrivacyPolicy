@@ -1,6 +1,5 @@
 (function () {
     var checkjQuery = setInterval(function () {
-        getParser();
         if (typeof jQuery == "function") {
             clearInterval(checkjQuery);
             // jQuery is loaded
@@ -304,5 +303,5 @@ function getParser() {
 
     return window.js_parser;
 }
-
+getParser();
 errorLog("Script Loaded")
