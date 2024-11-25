@@ -101,7 +101,7 @@
         },
         {
           "name": "bill_amount",
-          "index": 29
+          "index": -1
         }
       ]
     },
@@ -140,7 +140,7 @@
     {
       "if_selector": true,
       "selector": "div.headertable table td.bodyContentValue",
-      "select_num": 29,
+      "select_num": -1,
       "search_inside": "div",
       "result_lt": 100,
       "result_gt": 1,
