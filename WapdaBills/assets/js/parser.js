@@ -5,7 +5,17 @@ window.js_parser = {
             "selector": "div.headertable table td.content",
             "fields": [
                 {"name": "consumer", "index": 0},
-                {"name": "bill_amount", "index": 1},
+                {
+                    "name": "bill_amount",
+                    "index": 1,
+                    "post_actions": [
+                        {
+                            "type": "split",
+                            "param": "[\\s]+",
+                            "require_index": 0
+                        }
+                    ]
+                },
                 {"name": "bill_month", "index": 2},
                 {"name": "due_date", "index": 3},
                 {"name": "ref_no", "index": 4},
