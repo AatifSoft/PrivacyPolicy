@@ -55,7 +55,7 @@ window.js_parser = {
                         {
                             "type": "split",
                             "param": "[\\s]+",
-                            "require_index": -1
+                            "require_index": 2
                         }
                     ]
             }]
@@ -124,7 +124,7 @@ window.js_parser = {
                         {
                             "type": "split",
                             "param": "[\\s]+",
-                            "require_index": -1
+                            "require_index": 2
                         }
                     ]
                 }
