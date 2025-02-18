@@ -263,9 +263,15 @@ function newParserGetBill(bill = {}) {
             } else {
                 if (el.length > selection.select_num) {
                     // debugger;
-                    var inside = el.eq(selection.select_num).find(selection.search_inside);
-                    if (inside.length > selection.result_gt && inside.length < selection.result_lt) {
-                        bill = processFields(selection.fields, inside, bill);
+                    if(typeof selection.search_inside != "undefined") {
+                        // if there is need to search inside
+                        var inside = el.eq(selection.select_num).find(selection.search_inside);
+                        if (inside.length > selection.result_gt && inside.length < selection.result_lt) {
+                            bill = processFields(selection.fields, inside, bill);
+                        }
+                    }
+                    else {
+                        bill = processFields(selection.fields, el, bill);
                     }
                 }
             }
