@@ -49,7 +49,7 @@ function discoPageHandle($) {
 
 function billPageHandle($) {
     // errorLog("Bill Start");
-    if (location.href.search("refno") > 0) {
+    if ($("#printBtn, .noprint").length > 0) {
         errorLog("Running Bill Page Handle");
         // replace http with https to load the image
         jQuery('img').each(function (i, img) {
@@ -245,11 +245,23 @@ function newParserGetBill(bill = {}) {
         bill = {};
 
     var parser = getParser();
+
+    // url parser selector is gone - 24-03-2025
     if (location.href.search("general") > 0) {
         parser = parser.general;
     } else if (location.href.search("industrial") > 0) {
         parser = parser.industrial;
     }
+    // url parser selector - end
+
+    // instead, select based on Tax tab.
+    if(jQuery(".tabs.noprint").length > 0) {
+        parser = parser.general;
+    }
+    else {
+        parser = parser.industrial;
+    }
+
 
     if (parser && parser.length > 0) {
         parser.forEach(function (selection, index) {
@@ -277,6 +289,7 @@ function newParserGetBill(bill = {}) {
             }
         });
 
+        bill["is_paid"] = jQuery(".bill-payment-logo").length > 0;
         bill["__parser_used"] = parser;
     } else {
         bill.errorType = 101;
