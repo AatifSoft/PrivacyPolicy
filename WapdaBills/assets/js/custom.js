@@ -174,67 +174,6 @@ window.java2js = {
 
         return bill;
     },
-
-    oldParserGetBill: function (bill = {}) {
-        if (!bill)
-            bill = {};
-
-        var el = $("div.headertable table td.content");
-
-        if (location.href.search("general") > 0) {
-            el.each(function (i, r) {
-                bill[tags[i]] = jQuery(r).text().trim();
-            });
-
-            bill[tags[0]] = el.eq(0).text().trim(); // consumer
-            bill[tags[2]] = el.eq(2).text().trim(); // bill_month
-            bill[tags[3]] = el.eq(3).text().trim(); // due_date
-            bill[tags[4]] = el.eq(4).text().trim(); // ref_no
-
-            bill[tags[1]] = el.eq(1).text().trim(); // bill_amount
-            bill[tags[5]] = el.eq(5).text().trim(); // late_amount
-
-            if (el.eq(1).find('div').length > 1) {
-                bill[tags[1]] = el.eq(1).find('div:first').text().trim();
-                bill[tags[5]] = el.eq(5).find('div:first').text().trim();
-            }
-
-            if (el.eq(5).find('div').length >= 3) {
-                var t = el.eq(5).children('div:first').children("div:last").text().trim().split("\n");
-                bill[tags[5]] = t[t.length - 1].trim();
-            }
-
-
-            bill[tags[6]] = jQuery('table.maintable tr.content:first td:nth(5)').text().trim(); // issue date
-        } else if (location.href.search("industrial") > 0) {
-
-            var el1 = $("div.headertable table td.bodyContentValue");
-            bill[tags[0]] = el1.eq(0).text().trim(); // consumer
-            bill[tags[1]] = el1.eq(29).text().trim(); // amount
-            errorLog("industrial setup: " + el1.length);
-
-            el = $("div.headertable table .bodyContentValue td");
-            bill[tags[2]] = el.eq(0).text().trim(); // bill month
-            bill[tags[3]] = el.eq(1).text().trim(); // due date
-            bill[tags[4]] = el.eq(2).text().trim(); // ref no
-            bill[tags[5]] = el.eq(4).text().trim(); // late amount
-            bill[tags[6]] = jQuery('table.headertable tr.bodyContentValue:first td:nth(6)').text().trim(); // issue date
-
-            if (el1.eq(29).find('div').length > 1) {
-                bill[tags[1]] = el1.eq(29).find('div:first').text().trim();
-                bill[tags[5]] = el.eq(4).find('div:first').text().trim();
-            }
-            debugger;
-            if (el.eq(4).find('div').length >= 3) {
-                var t = el.eq(4).children('div:first').children("div:last").text().trim().split("\n");
-                bill[tags[5]] = t[t.length - 1].trim();
-            }
-
-            errorLog("industrial setup: " + el.length);
-        }
-
-        return bill;
-    }
 }
 
 function errorLog(msg) {
@@ -246,22 +185,23 @@ function newParserGetBill(bill = {}) {
         bill = {};
 
     var parser = getParser();
+    var url = location.href;
 
     // url parser selector is gone - 24-03-2025
-    if (location.href.search("general") > 0) {
+    if (url.includes("general") || url.includes("gbill.a")) {
         parser = parser.general;
-    } else if (location.href.search("industrial") > 0) {
+    } else if (url.includes("industrial") || url.includes("ibill.a")) {
         parser = parser.industrial;
     }
     // url parser selector - end
 
     // instead, select based on Tax tab.
-    if (jQuery(".tabs.noprint").length > 0) {
+    /*if (jQuery(".tabs.noprint").length > 0) {
         parser = parser.general;
     }
     else {
         parser = parser.industrial;
-    }
+    }*/
 
 
     if (parser && parser.length > 0) {

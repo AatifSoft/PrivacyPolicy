@@ -4,7 +4,7 @@ window.js_parser = {
             "if_selector": false,
             "selector": "div.headertable table td.content",
             "fields": [
-                {"name": "consumer", "index": 0},
+                { "name": "consumer", "index": 0 },
                 {
                     "name": "bill_amount",
                     "index": 1,
@@ -16,9 +16,9 @@ window.js_parser = {
                         }
                     ]
                 },
-                {"name": "bill_month", "index": 2},
-                {"name": "due_date", "index": 3},
-                {"name": "ref_no", "index": 4},
+                { "name": "bill_month", "index": 2 },
+                { "name": "due_date", "index": 3 },
+                { "name": "ref_no", "index": 4 },
                 {
                     "name": "late_amount",
                     "index": 5,
@@ -37,7 +37,7 @@ window.js_parser = {
             "selector": "div.headertable table td.content",
             "select_num": 6,
             "fields": [
-                {"name": "consumer", "index": 0},
+                { "name": "consumer", "index": 0 },
                 {
                     "name": "bill_amount",
                     "index": 2,
@@ -49,9 +49,9 @@ window.js_parser = {
                         }
                     ]
                 },
-                {"name": "bill_month", "index": 3},
-                {"name": "due_date", "index": 4},
-                {"name": "ref_no", "index": 5},
+                { "name": "bill_month", "index": 3 },
+                { "name": "due_date", "index": 4 },
+                { "name": "ref_no", "index": 5 },
                 {
                     "name": "late_amount",
                     "index": 6,
@@ -69,7 +69,7 @@ window.js_parser = {
             "if_selector": false,
             "selector": "table.maintable tr.content td",
             "fields": [
-                {"name": "issue_date", "index": 5}
+                { "name": "issue_date", "index": 5 }
             ]
         },
         {
@@ -80,7 +80,7 @@ window.js_parser = {
             "result_lt": 100,
             "result_gt": 0,
             "fields": [
-                {"name": "bill_amount", "index": 0}
+                { "name": "bill_amount", "index": 0 }
             ]
         },
         {
@@ -91,78 +91,52 @@ window.js_parser = {
             "result_lt": 3,
             "result_gt": 0,
             "fields": [
-                {"name": "late_amount", "index": 0}
+                { "name": "late_amount", "index": 0 }
             ]
         }
     ],
     "industrial": [
         {
             "if_selector": false,
-            "selector": "div.headertable table td.bodyContentValue",
+            "selector": "div.headertable table:last td.bodyContentValue",
             "fields": [
-                {"name": "consumer", "index": 0},
-                {"name": "bill_amount", "index": -1}
+                { "name": "bill_amount", "index": 0 }
             ]
         },
         {
             "if_selector": false,
-            "selector": "div.headertable table .bodyContentValue td",
+            "selector": "div.headertable table:last .bodyContentValue td",
             "fields": [
-                {"name": "bill_month", "index": 0},
-                {"name": "due_date", "index": 1},
-                {"name": "ref_no", "index": 2},
-                {"name": "late_amount", "index": 4}
-            ]
-        },
-        {
-            "if_selector": false,
-            "selector": "table.headertable tr.bodyContentValue td",
-            "fields": [
-                {"name": "issue_date", "index": 6}
-            ]
-        },
-        {
-            "if_selector": true,
-            "selector": "div.headertable table td.bodyContentValue",
-            "select_num": -1,
-            "search_inside": "div",
-            "result_lt": 100,
-            "result_gt": 1,
-            "fields": [
-                {"name": "bill_amount", "index": 0}
-            ]
-        },
-        {
-            "if_selector": true,
-            "selector": "div.headertable table .bodyContentValue td",
-            "select_num": 4,
-            "search_inside": "div",
-            "result_lt": 3,
-            "result_gt": 1,
-            "fields": [
-                {"name": "late_amount", "index": 0}
-            ]
-        },
-        {
-            "if_selector": true,
-            "selector": "div.headertable table .bodyContentValue td",
-            "select_num": 4,
-            "search_inside": "div",
-            "result_lt": 100,
-            "result_gt": 2,
-            "fields": [
+                { "name": "bill_month", "index": 0 },
+                { "name": "due_date", "index": 1 },
+                { "name": "ref_no", "index": 2 },
                 {
                     "name": "late_amount",
-                    "index": 2,
+                    "index": 4,
                     "post_actions": [
                         {
                             "type": "split",
                             "param": "[\\s]+",
-                            "require_index": 2
+                            "require_index": 5
                         }
                     ]
                 }
             ]
+        },
+
+        {
+            "if_selector": false,
+            "selector": "div.headertable table:eq(1) td.bodyContentValue",
+            "fields": [
+                { "name": "consumer", "index": 1 }
+            ]
+        },
+        {
+            "if_selector": false,
+            "selector": "table.maintable tr.content td",
+            "fields": [
+                { "name": "issue_date", "index": 5 }
+            ]
         }
-    ]
+    ],
 };
