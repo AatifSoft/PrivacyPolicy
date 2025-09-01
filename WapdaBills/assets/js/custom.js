@@ -53,7 +53,7 @@ function billPageHandle($) {
         errorLog("Running Bill Page Handle");
         // replace http with https to load the image
         jQuery('img').each(function (i, img) {
-            if (img.src.tolowerCase().startsWith("http:"))
+            if (img.src.toLowerCase().startsWith("http:"))
                 img.src = img.src.replace(/http:/i, 'https:');
         });
 
