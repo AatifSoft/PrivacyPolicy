@@ -35,13 +35,15 @@ function discoPageHandle($) {
                 js2java.sendErrorToAndroid(location.href, error);
             }
         } else {
-            if ($('#searchTextBox').val() == '') {
-                $('#searchTextBox').val(bill_data.refNo);
-                $("#btnSearch").click();
-                errorLog("Search for ref no started");
-            } else {
-                errorLog("Search already started, skipping the 2nd call.");
-            }
+            setTimeout(() => {
+                if ($('#searchTextBox').val() == '') {
+                    $('#searchTextBox').val(bill_data.refNo);
+                    $("#btnSearch").click();
+                    errorLog("Search for ref no started");
+                } else {
+                    errorLog("Search already started, skipping the 2nd call.");
+                }
+            }, 1000);
         }
     }
     //    errorLog("Disco End");
