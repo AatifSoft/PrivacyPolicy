@@ -133,10 +133,10 @@ window.js_parser = {
         },
         {
             "if_selector": false,
-            "selector": "table.maintable tr.content td",
+            "selector": "table.headertable tr.bodyContentValue td",
             "fields": [
-                { "name": "issue_date", "index": 5 }
+                { "name": "issue_date", "index": 6 }
             ]
-        }
+        },
     ],
 };
