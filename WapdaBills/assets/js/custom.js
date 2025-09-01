@@ -43,7 +43,7 @@ function discoPageHandle($) {
                 } else {
                     errorLog("Search already started, skipping the 2nd call.");
                 }
-            }, 1000);
+            }, 2000);
         }
     }
     //    errorLog("Disco End");
