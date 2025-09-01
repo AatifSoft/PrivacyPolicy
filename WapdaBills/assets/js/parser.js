@@ -1,7 +1,40 @@
 window.js_parser = {
     "general": [{
-        "if_selector": false,
+        "if_selector": false, // if total is less than 6
         "selector": "div.headertable table td.content",
+        "fields": [
+            { "name": "consumer", "index": 0 },
+            {
+                "name": "bill_amount",
+                "index": 1,
+                "post_actions": [
+                    {
+                        "type": "split",
+                        "param": "[\\s]+",
+                        "require_index": 0
+                    }
+                ]
+            },
+            { "name": "bill_month", "index": 2 },
+            { "name": "due_date", "index": 3 },
+            { "name": "ref_no", "index": 4 },
+            {
+                "name": "late_amount",
+                "index": 5,
+                "post_actions": [
+                    {
+                        "type": "split",
+                        "param": "[\\s]+",
+                        "require_index": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "if_selector": true, // if table has cnic field as well - total count 6
+        "selector": "div.headertable table td.content",
+        "select_num": 6,
         "fields": [
             { "name": "consumer", "index": 0 },
             {
