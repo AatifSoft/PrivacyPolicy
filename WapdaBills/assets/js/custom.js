@@ -1,6 +1,6 @@
 function getParser() {
-    if(typeof window.js_parser == "undefined") {
-        jQuery.ajaxSetup({cache: true});
+    if (typeof window.js_parser == "undefined") {
+        jQuery.ajaxSetup({ cache: true });
         jQuery.getScript("https://aatifsoft.github.io/PrivacyPolicy/WapdaBills/assets/js/parser.js");
     }
 
@@ -26,7 +26,7 @@ getParser();
 })();
 
 function discoPageHandle($) {
-//    errorLog("Disco Start");
+    //    errorLog("Disco Start");
     if (/bill\/?$/i.test(location.href)) { // ends with bill
         errorLog("Running Disco page Handle");
         var error = $("#ua").text();
@@ -44,7 +44,7 @@ function discoPageHandle($) {
             }
         }
     }
-//    errorLog("Disco End");
+    //    errorLog("Disco End");
 }
 
 function billPageHandle($) {
@@ -53,11 +53,12 @@ function billPageHandle($) {
         errorLog("Running Bill Page Handle");
         // replace http with https to load the image
         jQuery('img').each(function (i, img) {
-            img.src = img.src.replace(/http:/i, 'https:');
+            if (img.src.tolowerCase().startsWith("http:"))
+                img.src = img.src.replace(/http:/i, 'https:');
         });
 
         // hide the print button, as it does not work.
-        $("#printBtn, .noprint").hide();
+        $("#printBtn, .noprint, #loader-container").hide();
     }
     // errorLog("Bill End");
 }
@@ -76,9 +77,9 @@ function adjustViewPort($) {
     viewPortTag.content = "width=device-width, height=device-height, user-scalable=yes"; //, initial-scale=" + scale + ", minimum-scale=0.25, maximum-scale=10";
     errorLog(viewPortTag.content);
     document.getElementsByTagName('head')[0].appendChild(viewPortTag);
-//    document.getElementsByTagName('head')[0].appendChild(viewPortTag);
-//    document.getElementsByTagName('head')[0].appendChild(viewPortTag);
-//    document.getElementsByTagName('head')[0].appendChild(viewPortTag);
+    //    document.getElementsByTagName('head')[0].appendChild(viewPortTag);
+    //    document.getElementsByTagName('head')[0].appendChild(viewPortTag);
+    //    document.getElementsByTagName('head')[0].appendChild(viewPortTag);
 }
 
 function isValidDate(d) {
@@ -101,7 +102,7 @@ window.java2js = {
     getBillDetail: function () {
         errorLog("getBillDetail Called");
         var tags = ["consumer", "bill_amount", "bill_month", "due_date", "ref_no", "late_amount", "issue_date"];
-        var bill = {error: false, errorMessage: "A parsing error has occurred.", errorType: 0, wrongFields: []};
+        var bill = { error: false, errorMessage: "A parsing error has occurred.", errorType: 0, wrongFields: [] };
 
         if (typeof jQuery == "undefined") {
             bill.error = true;
@@ -123,7 +124,7 @@ window.java2js = {
 
         var $ = jQuery;
         billPageHandle($);
-//        adjustViewPort();
+        //        adjustViewPort();
 
         // bill = this.oldParserGetBill(bill);
         bill = newParserGetBill(bill);
@@ -174,7 +175,7 @@ window.java2js = {
         return bill;
     },
 
-    oldParserGetBill: function(bill = {}) {
+    oldParserGetBill: function (bill = {}) {
         if (!bill)
             bill = {};
 
@@ -255,7 +256,7 @@ function newParserGetBill(bill = {}) {
     // url parser selector - end
 
     // instead, select based on Tax tab.
-    if(jQuery(".tabs.noprint").length > 0) {
+    if (jQuery(".tabs.noprint").length > 0) {
         parser = parser.general;
     }
     else {
@@ -269,13 +270,13 @@ function newParserGetBill(bill = {}) {
             if (!selection.if_selector) {
                 bill = processFields(selection.fields, el, bill);
 
-                if(el.length <= 0 && selection.fields.length >= 2) {
+                if (el.length <= 0 && selection.fields.length >= 2) {
                     bill.errorType = 101;
                 }
             } else {
                 if (el.length > selection.select_num) {
                     // debugger;
-                    if(typeof selection.search_inside != "undefined") {
+                    if (typeof selection.search_inside != "undefined") {
                         // if there is need to search inside
                         var inside = el.eq(selection.select_num).find(selection.search_inside);
                         if (inside.length > selection.result_gt && inside.length < selection.result_lt) {
