@@ -124,5 +124,5 @@ window.js_parser = {
         "fields": [
             { "name": "issue_date", "index": 6 }
         ]
-    }],
+    }]
 };
