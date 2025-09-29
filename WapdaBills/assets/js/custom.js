@@ -35,7 +35,7 @@ function discoPageHandle($) {
                 js2java.sendErrorToAndroid(location.href, error);
             }
         } else {
-            setTimeout(() => {
+            setTimeout(function () {
                 if ($('#searchTextBox').val() == '') {
                     $('#searchTextBox').val(bill_data.refNo);
                     $("#btnSearch").click();
