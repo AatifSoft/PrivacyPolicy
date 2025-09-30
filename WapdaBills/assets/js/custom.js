@@ -1,15 +1,25 @@
 function getParser() {
     if (typeof window.js_parser == "undefined") {
-        //jQuery.ajaxSetup({ cache: true });
-        //jQuery.getScript("https://aatifsoft.github.io/PrivacyPolicy/WapdaBills/assets/js/parser.js");
-
-        // loadScript is a function in ExternalParser.js file
-        loadScript("https://aatifsoft.github.io/PrivacyPolicy/WapdaBills/assets/js/parser.js");
+        if (typeof window.loadScript == 'undefined') {
+            jQuery.ajaxSetup({ cache: true });
+            jQuery.getScript("https://aatifsoft.github.io/PrivacyPolicy/WapdaBills/assets/js/parser.js");
+        }
+        else {
+            // loadScript is a function in ExternalParser.js file
+            loadScript("https://aatifsoft.github.io/PrivacyPolicy/WapdaBills/assets/js/parser.js");
+        }
     }
 
     return window.js_parser;
 }
 getParser();
+
+if (typeof window.errorLog == 'undefined') {
+    window.errorLog = function (msg) {
+        // just to avoid error on older App Versions.
+        // As this function has been shifted to ExternalParser.js
+    }
+}
 
 (function () {
     var checkjQuery = setInterval(function () {
@@ -268,4 +278,4 @@ function processFields(fields, elements, bill) {
     return bill;
 }
 
-errorLog("Script Loaded")
+errorLog("Script custom.js Loaded")
