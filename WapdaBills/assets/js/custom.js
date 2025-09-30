@@ -39,8 +39,8 @@ function discoPageHandle($) {
             }
         } else {
             setTimeout(function () {
-                let sBox = document.getElementById("searchTextBox");
-                let btn = document.getElementById("btnSearch");
+                var sBox = document.getElementById("searchTextBox");
+                var btn = document.getElementById("btnSearch");
                 if (sBox.value == '') {
                     sBox.value = bill_data.refNo;
                     //$("#btnSearch").click();
