@@ -217,10 +217,6 @@ window.java2js = {
     },
 }
 
-function errorLog(msg) {
-    //console.log(msg + ", Timestamp: " + (new Date).getTime());
-}
-
 function newParserGetBill(bill) {
     if (!bill)
         bill = {};
