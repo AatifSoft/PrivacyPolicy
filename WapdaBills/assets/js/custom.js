@@ -2,47 +2,14 @@ function getParser() {
     if (typeof window.js_parser == "undefined") {
         //jQuery.ajaxSetup({ cache: true });
         //jQuery.getScript("https://aatifsoft.github.io/PrivacyPolicy/WapdaBills/assets/js/parser.js");
+
+        // loadScript is a function in ExternalParser.js file
+        loadScript("https://aatifsoft.github.io/PrivacyPolicy/WapdaBills/assets/js/parser.js");
     }
 
     return window.js_parser;
 }
 getParser();
-
-function loadScript(filePath) {
-    // Create a new script element
-    const script = document.createElement('script');
-
-    // Set the source of the script file
-    script.src = filePath;
-
-    // Optionally, set the type attribute (though 'text/javascript' is often default)
-    script.type = 'text/javascript';
-
-    // Optionally, set async to true for non-blocking loading
-    script.async = true;
-
-    // Add an onload event handler to know when the script has loaded
-    script.onload = () => {
-        console.log(`${filePath} loaded successfully.`);
-        // You can call functions from the loaded script here
-    };
-
-    // Add an onerror event handler to catch loading errors
-    script.onerror = () => {
-        console.error(`Error loading script: ${filePath}`);
-    };
-
-    // Append the script element to the document's head (or body)
-    document.head.appendChild(script);
-}
-
-if (typeof window.js_parser == "undefined") {
-    loadScript("https://aatifsoft.github.io/PrivacyPolicy/WapdaBills/assets/js/parser.js");
-}
-
-if (typeof jQuery == "undefined") {
-    loadScript("https://bill.pitc.com.pk/js/jquery-3.6.0.min.js");
-}
 
 (function () {
     var checkjQuery = setInterval(function () {
