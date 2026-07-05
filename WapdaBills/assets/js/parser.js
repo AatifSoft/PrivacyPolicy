@@ -1,73 +1,52 @@
 window.js_parser = {
     "general": [{
         "if_selector": false, // if total is less than 6
-        "selector": "div.headertable table td.content",
+        "selector": "footer .slip-matrix-value",
         "fields": [
-            { "name": "consumer", "index": 0 },
-            {
-                "name": "bill_amount",
-                "index": 1,
-                "post_actions": [
-                    {
-                        "type": "split",
-                        "param": "[\\s]+",
-                        "require_index": 0
-                    }
-                ]
-            },
-            { "name": "bill_month", "index": 2 },
-            { "name": "due_date", "index": 3 },
-            { "name": "ref_no", "index": 4 },
-            {
-                "name": "late_amount",
-                "index": 5,
-                "post_actions": [
-                    {
-                        "type": "split",
-                        "param": "[\\s]+",
-                        "require_index": 2
-                    }
-                ]
-            }
+            { "name": "bill_amount", "index": 0 },
+            { "name": "bill_month", "index": 1 },
+            { "name": "due_date", "index": 2 },
         ]
-    },
-    {
-        "if_selector": true, // if table has cnic field as well - total count 6
-        "selector": "div.headertable table td.content",
-        "select_num": 6,
+    }, {
+        "if_selector": false, // get late amount 
+        "selector": ".lp-surcharge-card .lp-surcharge-bottom-val",
         "fields": [
-            { "name": "consumer", "index": 0 },
-            {
-                "name": "bill_amount",
-                "index": 2,
-                "post_actions": [
-                    {
-                        "type": "split",
-                        "param": "[\\s]+",
-                        "require_index": 0
-                    }
-                ]
-            },
-            { "name": "bill_month", "index": 3 },
-            { "name": "due_date", "index": 4 },
-            { "name": "ref_no", "index": 5 },
             {
                 "name": "late_amount",
-                "index": 6, // working for credit amount / green meter.
-                "post_actions": [
+                "index": 1,
+                "post_actions": [ // remove dot and comma if exists
                     {
                         "type": "split",
-                        "param": "[\\s]+",
+                        "param": "[\.]+",
                         "require_index": 0
+                    }, {
+                        "type": "txt_replace",
+                        "find": ",",
+                        "replace": "",
                     }
                 ]
             }
         ]
     }, {
         "if_selector": false,
-        "selector": "table.maintable tr.content td",
+        "selector": "footer .slip-id-value",
         "fields": [
-            { "name": "issue_date", "index": 5 }
+            { "name": "consumer", "index": 0 },
+            { "name": "ref_no", "index": 1 }
+        ]
+    }, {
+        "if_selector": false,
+        "selector": "main .right-grid-cell .right-panel-date-val",
+        "fields": [
+            { "name": "issue_date", "index": 1 }
+        ]
+    }, {
+        "if_selector": false,
+        "selector": "main .meter-info-grid .val-space",
+        "fields": [
+            { "name": "prev_reading", "index": 2 },
+            { "name": "cur_reading", "index": 3 },
+            { "name": "units", "index": 4 },
         ]
     }, {
         // normal bills without credit bill

@@ -268,6 +268,12 @@ function processFields(fields, elements, bill) {
                             value = (splits[indx]).trim();
                         }
                     }
+
+                    if (post_action.type === "txt_replace") {
+                        if (typeof post_action.find != "undefined" && typeof post_action.replace != "undefined") {
+                            value = value.replaceAll(post_action.find, post_action.replace);
+                        }
+                    }
                 });
             }
 
