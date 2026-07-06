@@ -52,8 +52,9 @@ window.js_parser = {
             { "name": "issue_date", "index": 1 }
         ]
     }, { // Reading does not work for Industrial, Green Meter, while works for general.
-        "if_selector": false,
+        "if_selector": true,
         "selector": "main .meter-info-grid .val-space",
+        "select_num": 4,
         "fields": [
             { "name": "prev_reading", "index": 2 },
             { "name": "cur_reading", "index": 3 },
