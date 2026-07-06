@@ -12,7 +12,7 @@ window.js_parser = {
                 }]
             },
             { "name": "bill_month", "index": 1 },
-            { "name": "due_date", "index": 2 },
+            { "name": "due_date", "index": 2 }
         ]
     }, {
         "if_selector": false, // get late amount 
@@ -29,11 +29,11 @@ window.js_parser = {
                     }, {
                         "type": "txt_replace",
                         "find": ",",
-                        "replace": "",
+                        "replace": ""
                     }, {
                         "type": "txt_replace",
                         "find": " CR",
-                        "replace": "",
+                        "replace": ""
                     }
                 ]
             }
@@ -58,7 +58,7 @@ window.js_parser = {
         "fields": [
             { "name": "prev_reading", "index": 2, "getHtml": true, "post_actions": [{ "type": "txt_replace", "find": "<br>", "replace": "," }] },
             { "name": "cur_reading", "index": 3, "getHtml": true, "post_actions": [{ "type": "txt_replace", "find": "<br>", "replace": "," }] },
-            { "name": "units", "index": 4, "getHtml": true, "post_actions": [{ "type": "txt_replace", "find": "<br>", "replace": "," }] },
+            { "name": "units", "index": 4, "getHtml": true, "post_actions": [{ "type": "txt_replace", "find": "<br>", "replace": "," }] }
         ]
     }]
 };
