@@ -8,7 +8,7 @@ window.js_parser = {
                 "post_actions": [{
                     "type": "txt_replace",
                     "find": " CR",
-                    "replace": "",
+                    "replace": ""
                 }]
             },
             { "name": "bill_month", "index": 1 },
