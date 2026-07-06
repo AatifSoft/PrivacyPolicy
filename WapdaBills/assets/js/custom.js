@@ -198,14 +198,18 @@ function newParserGetBill(bill) {
     if (!bill)
         bill = {};
 
-    var parser = getParser();
+    var allParsers = getParser();
+    var parser = allParsers.general;
     var url = location.href;
 
     // url parser selector is gone - 24-03-2025
-    if (url.includes("general") || url.includes("gbill.a")) {
-        parser = parser.general;
-    } else if (url.includes("industrial") || url.includes("ibill.a")) {
-        parser = parser.industrial;
+    /*if (url.includes("general") || url.includes("gbill.a")) {
+        parser = allParsers.general;
+    } else */
+    // debugger;
+    if (url.includes("industrial") || url.includes("ibill.a")) {
+        if (typeof allParsers.industrial != "undefined")
+            parser = allParsers.industrial;
     }
     // url parser selector - end
 
