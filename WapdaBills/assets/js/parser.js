@@ -56,9 +56,9 @@ window.js_parser = {
         "selector": "main .meter-info-grid .val-space",
         "select_num": 4,
         "fields": [
-            { "name": "prev_reading", "index": 2 },
-            { "name": "cur_reading", "index": 3 },
-            { "name": "units", "index": 4 },
+            { "name": "prev_reading", "index": 2, "getHtml": true, "post_actions": [{ "type": "txt_replace", "find": "<br>", "replace": "," }] },
+            { "name": "cur_reading", "index": 3, "getHtml": true, "post_actions": [{ "type": "txt_replace", "find": "<br>", "replace": "," }] },
+            { "name": "units", "index": 4, "getHtml": true, "post_actions": [{ "type": "txt_replace", "find": "<br>", "replace": "," }] },
         ]
     }]
 };

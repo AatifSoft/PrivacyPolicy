@@ -261,7 +261,12 @@ function newParserGetBill(bill) {
 function processFields(fields, elements, bill) {
     fields.forEach(function (field, i) {
         if (elements.length > field.index) {
-            var value = elements.eq(field.index).text().trim();
+            var element = elements.eq(field.index);
+            if (field.hasOwnProperty("getHtml"))
+                var value = element.html().trim();
+            else
+                var value = element.text().trim();
+
             // debugger;
             if (field.hasOwnProperty("post_actions")) {
                 field.post_actions.forEach(function (post_action, i) {
@@ -279,10 +284,16 @@ function processFields(fields, elements, bill) {
                             value = value.replaceAll(post_action.find, post_action.replace);
                         }
                     }
+
+                    if (post_action.type === "replace") {
+                        if (typeof post_action.find != "undefined" && typeof post_action.replace != "undefined") {
+                            value = value.replaceAll(new RegExp(post_action.find), post_action.replace);
+                        }
+                    }
                 });
             }
 
-            bill[field.name] = value;
+            bill[field.name] = value.trim();
         }
     });
 
