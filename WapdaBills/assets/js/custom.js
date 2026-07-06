@@ -212,6 +212,7 @@ function newParserGetBill(bill) {
             parser = allParsers.industrial;
     }
     // url parser selector - end
+    // check
 
     // instead, select based on Tax tab.
     /*if (jQuery(".tabs.noprint").length > 0) {
