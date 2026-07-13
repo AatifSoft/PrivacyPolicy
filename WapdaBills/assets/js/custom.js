@@ -249,7 +249,7 @@ function newParserGetBill(bill) {
             }
         });
 
-        bill["is_paid"] = jQuery(".bill-payment-logo").length > 0;
+        bill["is_paid"] = jQuery(".payable-card-paid-stamp").length > 0;
         bill["__parser_used"] = parser;
     } else {
         bill.errorType = 101;
